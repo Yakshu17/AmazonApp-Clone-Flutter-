@@ -1,6 +1,6 @@
 import 'package:amazon_clone/Screens/LoginScreen.dart';
 import 'package:amazon_clone/Widgets/Utils.dart';
-import 'package:amazon_clone/Widgets/authentication_method.dart';
+import 'package:amazon_clone/resources/authentication_method.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -99,7 +99,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 11,
                       ),
                       const Row(
@@ -125,7 +125,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 11,
                       ),
                       const Row(
@@ -151,7 +151,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 focusColor: Colors.white,
                                 border: OutlineInputBorder()),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 11,
                       ),
                       const Row(
@@ -172,12 +172,13 @@ class _SignupScreenState extends State<SignupScreen> {
                           width: MediaQuery.of(context).size.width * 0.69,
                           child: TextFormField(
                             controller: passwordcontroller,
+                            obscureText: true,
                             decoration: const InputDecoration(
                                 fillColor: Colors.white,
                                 focusColor: Colors.white,
                                 border: OutlineInputBorder()),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SizedBox(
@@ -194,7 +195,6 @@ class _SignupScreenState extends State<SignupScreen> {
                               if (output == "Success") {
                                 //functions
                                 Utils().showSnackBar(context: context, content: output);
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
                               } else {
                                 //error feedback
                                 Utils().showSnackBar(context: context, content: output);

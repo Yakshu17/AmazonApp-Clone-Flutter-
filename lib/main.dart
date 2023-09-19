@@ -1,4 +1,5 @@
-import 'package:amazon_clone/Screens/SplashScreen.dart';
+import 'package:amazon_clone/Screens/LoginScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +29,25 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const SplashScreen(),
-    );
+      home: StreamBuilder(stream:FirebaseAuth.instance.authStateChanges(),
+          builder: (context, AsyncSnapshot<User?>user){
+        if(user.connectionState == ConnectionState.waiting){
+          return const Center(
+            child: CircularProgressIndicator(
+              color: Colors.orange,),
+          );
+        }else if (user.hasData){
+          print("UserId- ${FirebaseAuth.instance.currentUser!.uid}");
+          return ElevatedButton(onPressed: (){
+            FirebaseAuth.instance.signOut();
+          }, child: const Text("Signout"));
+        }
+        else{
+          return const LoginScreen();
+        }
+
+
+          }));
   }
 }
 

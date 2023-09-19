@@ -1,7 +1,6 @@
-import 'package:amazon_clone/Screens/HomeScreen.dart';
 import 'package:amazon_clone/Screens/SignupScreen.dart';
 import 'package:amazon_clone/Widgets/Utils.dart';
-import 'package:amazon_clone/Widgets/authentication_method.dart';
+import 'package:amazon_clone/resources/authentication_method.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
