@@ -1,3 +1,4 @@
+import 'package:amazon_clone/Model/User_details_model.dart';
 import 'package:amazon_clone/resources/cloudfirebase_method.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -18,7 +19,9 @@ if(name!="" && address!="" && email!="" && password!=""){
   try{
     await firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: password);
-    await cloudFirestoreClass.uploadnameAndAddressToDatabase(name: name, address: address);
+    UserDetailsModel user =UserDetailsModel(name: name, address: address);
+    await cloudFirestoreClass.uploadnameAndAddressToDatabase(
+        user: user);
     output ="Success";
   }
 

@@ -1,3 +1,4 @@
+import 'package:amazon_clone/Layout/Screen_layout.dart';
 import 'package:amazon_clone/Screens/LoginScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -37,10 +38,8 @@ class MyApp extends StatelessWidget {
               color: Colors.orange,),
           );
         }else if (user.hasData){
-          print("UserId- ${FirebaseAuth.instance.currentUser!.uid}");
-          return ElevatedButton(onPressed: (){
-            FirebaseAuth.instance.signOut();
-          }, child: const Text("Signout"));
+          //print("UserId- ${FirebaseAuth.instance.currentUser!.uid}");
+          return const ScreenLayout();
         }
         else{
           return const LoginScreen();

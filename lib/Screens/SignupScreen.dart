@@ -1,5 +1,5 @@
 import 'package:amazon_clone/Screens/LoginScreen.dart';
-import 'package:amazon_clone/Widgets/Utils.dart';
+import 'package:amazon_clone/Utils/Utils.dart';
 import 'package:amazon_clone/resources/authentication_method.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +17,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final namecontroller = TextEditingController();
   final addresscontroller = TextEditingController();
   final FirebaseAuth auth = FirebaseAuth.instance;
+  bool isloading =false;
   AuthenticationMethods authenticationMethods = AuthenticationMethods();
 
   final formkey = GlobalKey<FormState>();
@@ -194,6 +195,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
                               if (output == "Success") {
                                 //functions
+                                Navigator.pushReplacement(context,MaterialPageRoute(builder: (_) =>const LoginScreen() ,));
                                 Utils().showSnackBar(context: context, content: output);
                               } else {
                                 //error feedback
